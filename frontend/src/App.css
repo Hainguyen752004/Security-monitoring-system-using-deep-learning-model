@@ -1,0 +1,7 @@
+Button {
+    cursor: pointer;
+}
+
+div[role="menuitem"] {
+    cursor: pointer;
+}

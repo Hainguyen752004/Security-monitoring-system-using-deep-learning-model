@@ -1,5 +1,6 @@
 import { ModeToggle } from "./mode-toggle";
-import { Button } from "../components/ui/button"; // Importing button from ShadCN UI
+import { Button } from "../components/ui/button";
+import {Link} from "react-router-dom"; // Importing button from ShadCN UI
 
 const NavBar = () => {
     return (
@@ -7,9 +8,10 @@ const NavBar = () => {
             <span className="text-xl font-bold">Test-Website</span>
 
             <div className="flex items-center space-x-4">
-
+                <Link to={"/"}>Home</Link>
+                <Link to={"/about"}>About</Link>
                 <ModeToggle/>
-                <Button className={"bg-accent text-accent-foreground hover:bg-accent-foreground hover:text-accent border-2"}>Login</Button>
+                <Link to={"/login"}><Button className={"bg-accent text-accent-foreground hover:bg-accent-foreground hover:text-accent border-2"}>Login</Button></Link>
             </div>
         </div>
     );
