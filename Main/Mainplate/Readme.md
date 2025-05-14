@@ -13,7 +13,7 @@ characters on license plates.
 # Run the script with the following command:  
 python main.py --input path_to_video
 # To run on a web streamlit:
-python realtime.py
+python camplate.py
 # System Workflow
 ![image](https://github.com/user-attachments/assets/ba3b29bb-e875-4b64-a748-59459ebb6786)
 ## Image/Video Acquisition:
