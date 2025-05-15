@@ -38,11 +38,11 @@ router.post('/login', async (req, res) => {
     try {
         // Tìm user theo email
         const user = await User.findOne({ email });
-        if (!user) return res.status(400).json({ message: 'Invalid credentials' });
+        if (!user) return res.status(400).json({ message: 'Thông tin đăng nhập không chính xác.' });
 
         // So sánh mật khẩu
         const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) return res.status(400).json({ message: 'Invalid credentials' });
+        if (!isMatch) return res.status(400).json({ message: 'Thông tin đăng nhập không chính xác.' });
 
         // Tạo JWT token
         const token = jwt.sign(
