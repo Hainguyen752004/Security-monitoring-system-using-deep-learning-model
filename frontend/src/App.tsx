@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import Footer from './components/Footer';
 import { Toaster } from 'sonner';
 import Pricing from "./pages/Pricing.tsx";
+import Panel from "./pages/Panel.tsx";
 
 // Placeholder components for missing routes
 const Contact = () => <div className="text-center py-10">Contact Page (Under Construction)</div>;
@@ -32,6 +33,7 @@ function App() {
                         <Route path="/forgot-password" element={<ForgotPassword />} />
                         <Route path="/admin" element={<Admin />} />
                         <Route path="/dashboard" element={<Dashboard />} />
+                        <Route path="/panel" element={<Panel />} />
                         <Route path="*" element={<div className="text-center py-10">404 - Page Not Found</div>} />
                     </Routes>
                 </main>

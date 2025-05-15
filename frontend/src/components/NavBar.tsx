@@ -107,7 +107,7 @@ const NavBar = () => {
                             {/*<DropdownMenuLabel>My Account</DropdownMenuLabel>*/}
                             {/*<DropdownMenuSeparator />*/}
                             <DropdownMenuItem asChild>
-                                <Link to="/profile">Cài đặt tài khoản</Link>
+                                <Link to="/settings">Cài đặt tài khoản</Link>
                             </DropdownMenuItem>
                             <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
                         </DropdownMenuContent>
