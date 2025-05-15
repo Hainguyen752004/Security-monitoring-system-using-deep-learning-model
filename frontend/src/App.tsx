@@ -7,13 +7,15 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Footer from './components/Footer';
 
+
+
 function App() {
     return (
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
             <div className="flex flex-col min-h-screen">
                 <NavBar />
 
-                <main className="flex-grow">
+                <main className="flex-grow bg-primary-foreground">
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/about" element={<About />} />

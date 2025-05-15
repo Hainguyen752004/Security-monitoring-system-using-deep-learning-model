@@ -6,3 +6,13 @@ div[role="menuitem"] {
     cursor: pointer;
 }
 
+/* Ẩn scrollbar trên toàn bộ trang */
+html {
+    overflow-y: auto; /* Đảm bảo vẫn có thể cuộn */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+
+html::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}

@@ -21,8 +21,8 @@ const NavBar = () => {
                     <Button variant="ghost">Contact</Button>
                 </Link>
                 <ModeToggle />
-                <Link to="/signup">
-                    <Button>Sign Up</Button>
+                <Link to="/login">
+                    <Button>Login</Button>
                 </Link>
             </nav>
         </header>
