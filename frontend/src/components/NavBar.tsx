@@ -1,19 +1,31 @@
 import { ModeToggle } from "./mode-toggle";
 import { Button } from "../components/ui/button";
-import {Link} from "react-router-dom"; // Importing button from ShadCN UI
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
     return (
-        <div className="bg-accent min-w-full text-accent-foreground p-5 flex items-center justify-between">
-            <span className="text-xl font-bold">Test-Website</span>
+        <header className="p-5 flex items-center justify-between border-b bg-primary-foreground">
+            <span className="text-2xl font-bold">Test-Website</span>
 
-            <div className="flex items-center space-x-4">
-                <Link to={"/"}>Home</Link>
-                <Link to={"/about"}>About</Link>
-                <ModeToggle/>
-                <Link to={"/login"}><Button className={"bg-accent text-accent-foreground hover:bg-accent-foreground hover:text-accent border-2"}>Login</Button></Link>
-            </div>
-        </div>
+            <nav className="flex items-center space-x-4">
+                <Link to="/">
+                    <Button variant="ghost">Home</Button>
+                </Link>
+                <Link to="/about">
+                    <Button variant="ghost">About</Button>
+                </Link>
+                <Link to="/pricing">
+                    <Button variant="ghost">Pricing</Button>
+                </Link>
+                <Link to="/contact">
+                    <Button variant="ghost">Contact</Button>
+                </Link>
+                <ModeToggle />
+                <Link to="/signup">
+                    <Button>Sign Up</Button>
+                </Link>
+            </nav>
+        </header>
     );
 };
 
