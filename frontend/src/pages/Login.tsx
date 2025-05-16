@@ -41,11 +41,12 @@ const Login = () => {
             // Dispatch custom event to notify NavBar
             window.dispatchEvent(new Event('localStorageChange'));
 
-            toast.success('Logged in successfully!', {
-                description: 'Welcome back!',
+            toast.success('Đăng nhập thành công!', {
+                description: 'Chúc bạn một ngày tốt lành'
             });
 
-            navigate(data.user.role === 'admin' ? '/admin' : '/dashboard');
+            // navigate(data.user.role === 'admin' ? '/admin' : '/dashboard');
+            navigate('/panel');
         } catch (err) {
             console.error('Fetch error:', err);
             let errorMessage = (err as Error).message || 'An unexpected error occurred.';

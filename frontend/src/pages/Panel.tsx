@@ -1,34 +1,28 @@
 import { useState } from 'react';
 import { Button } from '../components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
+// import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { ScrollArea } from '../components/ui/scroll-area';
-// import {Separator} from "../components/ui/separator.tsx";
 import { Menu, Video, X } from 'lucide-react';
+import ReactPlayer from 'react-player';
 
 const CameraPanel = () => {
     const [selectedRoom, setSelectedRoom] = useState(null);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-    // Dữ liệu giả lập: danh sách phòng và camera
     const rooms = [
         { id: 1, name: 'Phòng 101' },
         { id: 2, name: 'Phòng 102' },
         { id: 3, name: 'Phòng 103' },
-        { id: 4, name: 'Phòng 201' },
-        { id: 5, name: 'Phòng 202' },
-        { id: 6, name: 'Phòng 301' },
     ];
 
     const cameras = [
-        { id: 1, roomId: 1, name: 'Camera 1', streamUrl: 'https://via.placeholder.com/300' },
-        { id: 2, roomId: 1, name: 'Camera 2', streamUrl: 'https://via.placeholder.com/300' },
-        { id: 3, roomId: 2, name: 'Camera 1', streamUrl: 'https://via.placeholder.com/300' },
-        { id: 4, roomId: 2, name: 'Camera 2', streamUrl: 'https://via.placeholder.com/300' },
-        { id: 5, roomId: 3, name: 'Camera 1', streamUrl: 'https://via.placeholder.com/300' },
-        { id: 6, roomId: 4, name: 'Camera 1', streamUrl: 'https://via.placeholder.com/300' },
+        { id: 1, roomId: 1, name: 'Camera 1', streamUrl: 'https://stream-akamai.castr.com/5b9352dbda7b8c769937e459/live_2361c920455111ea85db6911fe397b9e/index.fmp4.m3u8' },
+        { id: 2, roomId: 1, name: 'Camera 2', streamUrl: 'https://stream-akamai.castr.com/5b9352dbda7b8c769937e459/live_2361c920455111ea85db6911fe397b9e/index.fmp4.m3u8' },
+        { id: 3, roomId: 2, name: 'Camera 3', streamUrl: 'https://stream-akamai.castr.com/5b9352dbda7b8c769937e459/live_2361c920455111ea85db6911fe397b9e/index.fmp4.m3u8' },
+        { id: 4, roomId: 3, name: 'Camera 4', streamUrl: 'https://stream-akamai.castr.com/5b9352dbda7b8c769937e459/live_2361c920455111ea85db6911fe397b9e/index.fmp4.m3u8' },
+        { id: 5, roomId: 3, name: 'Camera 5', streamUrl: 'https://stream-akamai.castr.com/5b9352dbda7b8c769937e459/live_2361c920455111ea85db6911fe397b9e/index.fmp4.m3u8' },
     ];
 
-    // Lọc camera theo phòng được chọn
     const filteredCameras = selectedRoom
         ? cameras.filter((camera) => camera.roomId === selectedRoom)
         : cameras;
@@ -78,11 +72,10 @@ const CameraPanel = () => {
             </aside>
 
             {/* Main Content */}
-            <main className="flex-1 p-4 sm:p-6 lg:p-8">
-                {/* Header */}
-                <div className="flex items-center justify-between mb-6">
-                    <h1 className="text-2xl sm:text-3xl font-bold text-primary">
-                        Quản lý Camera {selectedRoom ? `- ${rooms.find((r) => r.id === selectedRoom)?.name}` : ''}
+            <main className="flex-1 p-2 sm:p-4 lg:p-6">
+                <div className="flex items-center justify-between mb-4">
+                    <h1 className="text-xl sm:text-2xl font-bold text-primary">
+                        Quan sát Camera {selectedRoom ? `- ${rooms.find((r) => r.id === selectedRoom)?.name}` : ''}
                     </h1>
                     <Button
                         variant="ghost"
@@ -95,26 +88,27 @@ const CameraPanel = () => {
                 </div>
 
                 {/* Camera Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-2">
                     {filteredCameras.length > 0 ? (
                         filteredCameras.map((camera) => (
-                            <Card key={camera.id} className="border-none shadow-md hover:shadow-lg transition-shadow duration-300">
-                                <CardHeader className="p-4">
-                                    <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
-                                        <Video className="h-4 sm:h-5 w-4 sm:w-5 text-primary" />
-                                        {camera.name}
-                                    </CardTitle>
-                                </CardHeader>
-                                <CardContent className="p-4">
-                                    <div className="aspect-square bg-muted rounded-lg overflow-hidden">
-                                        <img
-                                            src={camera.streamUrl}
-                                            alt={camera.name}
-                                            className="w-full h-full object-cover"
+                            <div key={camera.id} className="border rounded bg-accent shadow-sm">
+                                <div className="p-2 text-sm font-semibold flex items-center gap-2 border-b">
+                                    <Video className="w-4 h-4 text-primary" />
+                                    {camera.name}
+                                </div>
+                                <div className="relative w-full pt-[56.25%] bg-black">
+                                    <div className="absolute top-0 left-0 w-full h-full">
+                                        <ReactPlayer
+                                            url={camera.streamUrl}
+                                            playing={true}
+                                            controls={true}
+                                            muted={true}
+                                            width="100%"
+                                            height="100%"
                                         />
                                     </div>
-                                </CardContent>
-                            </Card>
+                                </div>
+                            </div>
                         ))
                     ) : (
                         <div className="col-span-full text-center text-muted-foreground">
