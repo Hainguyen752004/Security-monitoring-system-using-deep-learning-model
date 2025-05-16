@@ -9,6 +9,8 @@ var cors = require('cors');
 
 // Routers
 var authRouter = require('./routes/auth');
+var areaRouter = require('./routes/area');
+var cameraRouter = require('./routes/camera');
 
 var app = express();
 
@@ -32,6 +34,8 @@ app.use(cors1());
 
 // Routes
 app.use('/api/auth', authRouter);
+app.use('/api/areas', areaRouter);
+app.use('/api/cameras', cameraRouter);
 
 // Catch 404
 app.use(function(req, res, next) {
